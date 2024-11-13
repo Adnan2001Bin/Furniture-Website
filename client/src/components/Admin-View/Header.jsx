@@ -8,4 +8,4 @@ function AdminHeader() {
   )
 }
 
-export default Header
+export default AdminHeader
