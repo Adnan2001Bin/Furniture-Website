@@ -1,35 +1,114 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AuthLayout from "./components/auth/layout";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import AdminLayout from "./components/Admin-View/layout";
+import AdminDashboard from "./pages/Admin-View/Dashboard";
+import AdminFeatures from "./pages/Admin-View/Features";
+import AdminOrder from "./pages/Admin-View/Order";
+import AdminProducts from "./pages/Admin-View/Products";
+import ShoppingLayout from "./components/Shopping-View/layout";
+import ShoppingHome from "./pages/Shopping-View/Home";
+import ShoppingListing from "./pages/Shopping-View/Listing";
+import ShoppingCheckout from "./pages/Shopping-View/Checkout";
+import ShoppingAccount from "./pages/Shopping-View/Account";
+import NotFound from "./pages/Not-Found";
+import UnauthPage from "./pages/unauth-page";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isAuthenticated = false;
+  const user = null;
+
+  const router = createBrowserRouter([
+    {
+      path: "/auth",
+      element: (
+        <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+          <AuthLayout />
+        </CheckAuth>
+      ),
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+          <AdminLayout />
+        </CheckAuth>
+      ),
+      children: [
+        {
+          path: "dashboard",
+          element: <AdminDashboard />,
+        },
+        {
+          path: "features",
+          element: <AdminFeatures />,
+        },
+        {
+          path: "order",
+          element: <AdminOrder />,
+        },
+        {
+          path: "products",
+          element: <AdminProducts />,
+        },
+      ],
+    },
+    {
+      path: "shop",
+      element: (
+        <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+          <ShoppingLayout />
+        </CheckAuth>
+      ),
+      children: [
+        {
+          path: "home",
+          element: <ShoppingHome />,
+        },
+        {
+          path: "listing",
+          element: <ShoppingListing />,
+        },
+        {
+          path: "checkout",
+          element: <ShoppingCheckout />,
+        },
+        {
+          path: "account",
+          element: <ShoppingAccount />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+    {
+      path: "/unauth-page",
+      element: <UnauthPage />,
+    },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   )
 }
 
-export default App
+export default App;
