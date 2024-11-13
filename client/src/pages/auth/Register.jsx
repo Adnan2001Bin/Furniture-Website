@@ -1,4 +1,5 @@
 import CommonForm from "@/components/common/Form";
+import { registerFormControls } from "@/Config";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
