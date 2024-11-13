@@ -22,7 +22,7 @@ import CheckAuth from "./components/common/Check-Auth";
 
 function App() {
   const isAuthenticated = false;
-  const user = null;
+  const user = null
 
   const router = createBrowserRouter([
     {
