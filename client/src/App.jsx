@@ -19,10 +19,11 @@ import ShoppingAccount from "./pages/Shopping-View/Account";
 import NotFound from "./pages/Not-Found";
 import UnauthPage from "./pages/unauth-page";
 import CheckAuth from "./components/common/Check-Auth";
+import { useSelector } from "react-redux";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null
+  const {user , isAuthenticated} = useSelector(state => state.auth)
+
 
   const router = createBrowserRouter([
     {
