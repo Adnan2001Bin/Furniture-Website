@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -19,10 +19,20 @@ import ShoppingAccount from "./pages/Shopping-View/Account";
 import NotFound from "./pages/Not-Found";
 import UnauthPage from "./pages/unauth-page";
 import CheckAuth from "./components/common/Check-Auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "./store/auth-slice";
+import { Skeleton } from "./components/ui/skeleton";
 
 function App() {
-  const {user , isAuthenticated} = useSelector(state => state.auth)
+  const {user , isAuthenticated , isLoading} = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(checkAuth())
+  } , [dispatch])
+
+
+  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
 
   const router = createBrowserRouter([

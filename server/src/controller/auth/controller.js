@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import {User} from "../../models/user.model.js";
+import { User } from "../../models/user.model.js";
 //register
 
 const registerUser = async (req, res) => {
@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
         message: "User Already exists with the same email! Please try again",
       });
 
-    const hashPassword = await bcrypt.hash(password,12);
+    const hashPassword = await bcrypt.hash(password, 12);
     const newUser = new User({
       userName,
       email,
@@ -31,7 +31,7 @@ const registerUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Some error occured",
-      error:e
+      error: e,
     });
   }
 };
@@ -67,8 +67,7 @@ const loginUser = async (req, res) => {
       "CLIENT_SECRET_KEY",
       {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
-      },
-
+      }
     );
 
     res.cookie("token", token, { httpOnly: true, secure: false }).json({
@@ -91,6 +90,32 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser,loginUser };
+const logoutUser = (req, res) => {
+  res.clearCookie("token").json({
+    success: true,
+    message: "Logged out successfully!",
+  });
+};
 
+//auth middleware
+const authMiddleware = async (req, res, next) => {
+  const token = req.cookies.token;
 
+  if (!token)
+    return res.status(401).json({
+      success: false,
+      message: "Unauthorised user!",
+    });
+
+  try {
+    const decoded = jwt.verify(token, "CLIENT_SECRET_KEY");
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({
+      success: false,
+      message: "Unauthorised user!",
+    });
+  }
+};
+export { registerUser, loginUser, logoutUser, authMiddleware };
