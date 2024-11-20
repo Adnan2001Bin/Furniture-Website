@@ -62,4 +62,23 @@ const addProduct = async (req, res) => {
   }
 };
 
-export { handleImageUpload, addProduct };
+//fetch all products
+
+const fetchAllProducts = async (req, res) => {
+  try {
+    const listOfProducts = await Product.find({});
+    res.status(200).json({
+      success: true,
+      data: listOfProducts,
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      success: false,
+      message: "Error occured",
+    });
+  }
+};
+
+
+export { handleImageUpload, addProduct ,fetchAllProducts};
