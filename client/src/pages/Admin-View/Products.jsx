@@ -1,3 +1,4 @@
+import ProductImageUpload from "@/components/Admin-View/image-upload";
 import CommonForm from "@/components/common/Form";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +27,10 @@ function AdminProducts() {
     useState(false);
 
   const [formData, setFormData] = useState(initialFormData);
+  const [imageFile, setImageFile] = useState(null);
+
+  const [imageLoadingState, setImageLoadingState] = useState(false);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
 
   function onSubmit() {}
   console.log(formData, "productList");
@@ -49,6 +54,15 @@ function AdminProducts() {
             <SheetHeader>
               <SheetTitle>Add New Product</SheetTitle>
             </SheetHeader>
+
+            <ProductImageUpload 
+              imageFile = {imageFile}
+              setImageFile= {setImageFile}
+              uploadedImageUrl = {uploadedImageUrl}
+              setUploadedImageUrl = {setUploadedImageUrl}
+              setImageLoadingState={setImageLoadingState}
+
+            />
 
             <div className="py-6">
               <CommonForm
