@@ -8,8 +8,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { addProductFormElements } from "@/Config";
+import { useToast } from "@/hooks/use-toast";
+import { addNewProduct, fetchAllProducts } from "@/store/admin/products-slice";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialFormData = {
   image: null,
@@ -27,13 +30,40 @@ function AdminProducts() {
     useState(false);
 
   const [formData, setFormData] = useState(initialFormData);
+
   const [imageFile, setImageFile] = useState(null);
-
-  const [imageLoadingState, setImageLoadingState] = useState(false);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+  const [imageLoadingState, setImageLoadingState] = useState(false);
+  const { productList } = useSelector((state) => state.adminProducts);
+  const dispatch = useDispatch()
+  const {toast} = useToast()
 
-  function onSubmit() {}
-  console.log(formData, "productList");
+
+  function onSubmit(event) {
+    event.preventDefault();
+
+    dispatch(addNewProduct({
+      ...formData,
+      image: uploadedImageUrl
+    })).then((data) => {
+      console.log(data)
+
+      if (data?.payload?.success) {
+        dispatch(fetchAllProducts())
+        setOpenCreateProductsDialog(false)
+        setImageFile(null)
+        setFormData(initialFormData)
+        toast({
+          title: 'Product add successfully'
+        })
+      }
+    })
+  }
+
+  useEffect(() => {
+    dispatch(fetchAllProducts())
+  },[dispatch])
+  console.log(productList, uploadedImageUrl,"productList");
 
   return (
     <Fragment>
@@ -55,17 +85,14 @@ function AdminProducts() {
               <SheetTitle>Add New Product</SheetTitle>
             </SheetHeader>
 
-            <ProductImageUpload 
-              imageFile = {imageFile}
-              setImageFile= {setImageFile}
-              uploadedImageUrl = {uploadedImageUrl}
-              setUploadedImageUrl = {setUploadedImageUrl}
+            <ProductImageUpload
+              imageFile={imageFile}
+              setImageFile={setImageFile}
+              uploadedImageUrl={uploadedImageUrl}
+              setUploadedImageUrl={setUploadedImageUrl}
               setImageLoadingState={setImageLoadingState}
               imageLoadingState = {imageLoadingState}
-
-
             />
-
             <div className="py-6">
               <CommonForm
                 onSubmit={onSubmit}
