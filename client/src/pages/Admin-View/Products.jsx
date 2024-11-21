@@ -61,6 +61,8 @@ function AdminProducts() {
               uploadedImageUrl = {uploadedImageUrl}
               setUploadedImageUrl = {setUploadedImageUrl}
               setImageLoadingState={setImageLoadingState}
+              imageLoadingState = {imageLoadingState}
+
 
             />
 
