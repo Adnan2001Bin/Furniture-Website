@@ -102,3 +102,43 @@ export const addProductFormElements = [
     placeholder: "Enter total stock",
   },
 ];
+
+
+export const shoppingViewHeaderMenuItems = [
+  {
+    id: "home",
+    label: "Home",
+    path: "/shop/home",
+  },
+  {
+    id: "Bedroom",
+    label: "Bedroom",
+    path: "/shop/listing",
+  },
+  {
+    id: "Dinning",
+    label: "Dinning",
+    path: "/shop/listing",
+  },
+  {
+    id: "LivingRoom",
+    label: "Living Room",
+    path: "/shop/listing",
+  },
+  {
+    id: "Office",
+    label: "Office",
+    path: "/shop/listing",
+  },
+  {
+    id: "Door",
+    label: "Door",
+    path: "/shop/listing",
+  },
+
+  {
+    id: "search",
+    label: "Search",
+    path: "/shop/search",
+  },
+];
