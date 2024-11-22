@@ -1,4 +1,5 @@
 import ProductImageUpload from "@/components/Admin-View/image-upload";
+import AdminProductTile from "@/components/Admin-View/product-tile";
 import CommonForm from "@/components/common/Form";
 import { Button } from "@/components/ui/button";
 import {
@@ -71,6 +72,17 @@ function AdminProducts() {
         <Button onClick={() => setOpenCreateProductsDialog(true)}>
           Add New Product
         </Button>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {productList && productList.length > 0
+          ? productList.map((productItem) => (
+              <AdminProductTile
+                product={productItem}
+
+              />
+            ))
+          : null}
       </div>
 
       <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
