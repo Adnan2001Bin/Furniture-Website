@@ -1,0 +1,12 @@
+.bedCatagories {
+    width: 45rem;
+    height: 21.5rem;
+    margin-left: -8rem;
+}
+
+.bedItems {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}

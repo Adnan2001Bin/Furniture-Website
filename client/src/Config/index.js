@@ -1,3 +1,4 @@
+
 export const registerFormControls = [
   {
     name: "userName",
@@ -109,31 +110,40 @@ export const shoppingViewHeaderMenuItems = [
     id: "home",
     label: "Home",
     path: "/shop/home",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
+    
   },
   {
     id: "Bedroom",
     label: "Bedroom",
     path: "/shop/listing",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "Dinning",
     label: "Dinning",
     path: "/shop/listing",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
+
   },
   {
     id: "LivingRoom",
     label: "Living Room",
     path: "/shop/listing",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
+
   },
   {
     id: "Office",
     label: "Office",
     path: "/shop/listing",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
   },
   {
     id: "Door",
     label: "Door",
     path: "/shop/listing",
+    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
   },
 
   {

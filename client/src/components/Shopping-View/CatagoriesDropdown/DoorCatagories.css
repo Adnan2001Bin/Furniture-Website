@@ -1,0 +1,12 @@
+.doorCatagories {
+    width: 45rem;
+    height: 50vh;
+    margin-left: -30rem;
+}
+
+.doorItems {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}

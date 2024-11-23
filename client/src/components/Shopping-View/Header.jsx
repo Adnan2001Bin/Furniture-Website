@@ -22,7 +22,7 @@ function ShoppingHeader() {
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="left" className="w-full max-w-xs">
+          <SheetContent side="left" className="w-full max-w-xs ">
             <MenuItems />
             <HeaderRightContent />
           </SheetContent>
