@@ -1,5 +1,5 @@
 import { shoppingViewHeaderMenuItems } from "@/Config";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import BedroomCatagories from "./CatagoriesDropdown/BedroomCatagories"; // Correct import
 import DinningCatagories from "./CatagoriesDropdown/DinningCatagories";
@@ -8,25 +8,34 @@ import OfficeCatagories from "./CatagoriesDropdown/OfficeCatagories";
 import DoorCatagories from "./CatagoriesDropdown/DoorCatagories";
 
 function MenuItems() {
-  const [activeDropdown, setActiveDropdown] = useState(null); // Tracks the active dropdown menu
-  const navigate = useNavigate();
+  const [hoveredItem, setHoveredItem] = useState(null); // Tracks the hovered menu item
 
-  // Toggle dropdown visibility
-  const handleToggleDropdown = (id) => {
-    setActiveDropdown((prev) => (prev === id ? null : id)); // Toggle active state
+  // Handle mouse enter to set hovered item
+  const handleMouseEnter = (id) => {
+    setHoveredItem(id);
+  };
+
+  // Handle mouse leave to reset hovered item
+  const handleMouseLeave = () => {
+    setHoveredItem(null);
   };
 
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row relative">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
-        <Link key={menuItem.id} to={menuItem.path} className="relative group ">
+        <div
+          key={menuItem.id}
+          className="relative group"
+          onMouseEnter={() => handleMouseEnter(menuItem.id)}
+          onMouseLeave={handleMouseLeave}
+        >
           {/* Menu Item Link */}
-          <div
-            className="text-sm font-medium cursor-pointer flex items-center h-10 group"
-            onClick={() => handleToggleDropdown(menuItem.id)}
+          <Link
+            to={menuItem.path}
+            className="text-sm font-medium cursor-pointer flex items-center h-10"
           >
             {menuItem.label}
-            
+
             {/* Icon logic */}
             {menuItem.label !== "Search" && menuItem.label !== "Home" && (
               <img
@@ -35,21 +44,20 @@ function MenuItems() {
                 alt=""
               />
             )}
-          </div>
+          </Link>
 
           {/* Render Dropdown */}
-          {activeDropdown === menuItem.id && (
-            <div className="absolute z-[999] group-hover:block hidden">
+          {hoveredItem === menuItem.id && (
+            <div className="absolute z-[999] bg-white shadow-lg rounded-md mt-2">
               {/* Conditional rendering for different categories */}
               {menuItem.id === "Bedroom" && <BedroomCatagories />}
               {menuItem.id === "Dinning" && <DinningCatagories />}
               {menuItem.id === "LivingRoom" && <LivingRoomCatagories />}
               {menuItem.id === "Office" && <OfficeCatagories />}
               {menuItem.id === "Door" && <DoorCatagories />}
-              
             </div>
           )}
-        </Link>
+        </div>
       ))}
     </nav>
   );

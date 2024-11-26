@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 function ShoppingHome() {
   return (
     <div>
-      <h1>ShoppingHome</h1>
+      Home
     </div>
   )
 }

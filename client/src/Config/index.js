@@ -61,26 +61,14 @@ export const addProductFormElements = [
     name: "category",
     componentType: "select",
     options: [
-      { id: "men", label: "Men" },
-      { id: "women", label: "Women" },
-      { id: "kids", label: "Kids" },
-      { id: "accessories", label: "Accessories" },
-      { id: "footwear", label: "Footwear" },
+      { id: "bedroom", label: "Bedroom" },
+      { id: "dinningroom", label: "Dinningroom" },
+      { id: "livingroom", label: "Livingroom" },
+      { id: "office", label: "Office" },
+      { id: "door", label: "Door" },
     ],
   },
-  {
-    label: "Brand",
-    name: "brand",
-    componentType: "select",
-    options: [
-      { id: "nike", label: "Nike" },
-      { id: "adidas", label: "Adidas" },
-      { id: "puma", label: "Puma" },
-      { id: "levi", label: "Levi's" },
-      { id: "zara", label: "Zara" },
-      { id: "h&m", label: "H&M" },
-    ],
-  },
+
   {
     label: "Price",
     name: "price",
@@ -151,4 +139,36 @@ export const shoppingViewHeaderMenuItems = [
     label: "Search",
     path: "/shop/search",
   },
+];
+
+
+
+export const categoryOptionsMap = {
+  bedroom: "Bedroom",
+  dinning: "Dinning",
+  livingRoom: "LivingRoom",
+  office: "Office",
+  ddor: "Door",
+};
+
+
+
+
+
+export const filterOptions = {
+  category: [
+    { id: "bedroom", label: "Bedroom" },
+    { id: "dinning", label: "Dinning" },
+    { id: "livingRoom", label: "LivingRoom" },
+    { id: "office", label: "Office" },
+    { id: "ddor", label: "Door" },
+  ],
+ 
+};
+
+export const sortOptions = [
+  { id: "price-lowtohigh", label: "Price: Low to High" },
+  { id: "price-hightolow", label: "Price: High to Low" },
+  { id: "title-atoz", label: "Title: A to Z" },
+  { id: "title-ztoa", label: "Title: Z to A" },
 ];
