@@ -13,6 +13,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { sortOptions } from "@/Config";
 import { ArrowUpDownIcon } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+
+
+function createSearchParamsHelper(filterParams) {
+  const queryParams = [];
+
+  for (const [key, value] of Object.entries(filterParams)) {
+    if (Array.isArray(value) && value.length > 0) {
+      const paramValue = value.join(",");
+
+      queryParams.push(`${key}=${encodeURIComponent(paramValue)}`);
+    }
+  }
+
+  console.log(queryParams, "queryParams");
+
+  return queryParams.join("&");
+}
 
 function ShoppingListing() {
   const dispatch = useDispatch();
@@ -20,6 +38,8 @@ function ShoppingListing() {
 
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState(null);
+  const [searchParams , setSearchParams] =useSearchParams()
+
 
   // Restore filters from sessionStorage on load
   useEffect(() => {
@@ -67,6 +87,13 @@ function ShoppingListing() {
     setFilters(updatedFilters);
     sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
   }
+
+  useEffect(() => {
+    if (filters && Object.keys(filters).length > 0) {
+      const createQueryString = createSearchParamsHelper(filters);
+      setSearchParams(new URLSearchParams(createQueryString));
+    }
+  }, [filters]);
 
   console.log(filters, "filters")
 
