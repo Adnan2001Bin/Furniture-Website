@@ -1,4 +1,3 @@
-
 export const registerFormControls = [
   {
     name: "userName",
@@ -40,8 +39,6 @@ export const loginFormControls = [
   },
 ];
 
-
-
 export const addProductFormElements = [
   {
     label: "Title",
@@ -70,6 +67,81 @@ export const addProductFormElements = [
   },
 
   {
+    label: "Bedroom",
+    name: "bedroom",
+    componentType: "select",
+    options: [
+      { id: "bedroomSet", label: "Bedroom Set" },
+      { id: "bed", label: "Bed" },
+      { id: "readingTable", label: "Reading Table" },
+      { id: "bedSideTable", label: "BedSide Table" },
+      { id: "wardrobe", label: "Wardrobe" },
+      { id: "dressingTable", label: "Dressing Table" },
+    ],
+  },
+  {
+    label: "DinningRoom",
+    name: "dinningroom",
+    componentType: "select",
+    options: [
+      { id: "dinningroomSet", label: "Dinning Room Set" },
+      { id: "dinningChair", label: "Dinning Chair" },
+      { id: "cafeteria", label: "Cafeteria" },
+      { id: "dinnerWagone", label: "Dinner Wagone" },
+      { id: "showcase", label: "Showcase" },
+      { id: "teaTrolley", label: "Tea Trolley" },
+    ],
+  },
+  {
+    label: "LivingRoom",
+    name: "livingRoom",
+    componentType: "select",
+    options: [
+      { id: "sofa", label: "Sofa" },
+      { id: "centerTable", label: "Dinningroom" },
+      { id: "divan", label: "Divan" },
+      { id: "chair", label: "Chair" },
+      { id: "tvCabinet", label: "TV Cabinet" },
+      { id: "shoeRack", label: "Shoe Rack" },
+    ],
+  },
+  {
+    label: "Office",
+    name: "office",
+    componentType: "select",
+    options: [
+      { id: "sofa", label: "Sofa" },
+      { id: "directortable", label: "Director Table" },
+      { id: "computerTable", label: "Computer Table" },
+      { id: "receptionTable", label: "Reception Table" },
+      { id: "conferenceTable", label: "Conference Table" },
+      { id: "swivelChair", label: "Swivel Chair" },
+    ],
+  },
+  {
+    label: "Door",
+    name: "door",
+    componentType: "select",
+    options: [
+      { id: "solidWoodenDoor", label: "Solid Wooden Door" },
+      {
+        id: "solidEngineeredWoodenDoor",
+        label: "Solid Engineered Wooden Door",
+      },
+      { id: "solidWoodenGlassDoor", label: "Solid Wooden Glass Door" },
+      {
+        id: "decorativeVeneeredFlushDoor",
+        label: "Decorative Veneered Flush Door",
+      },
+      {
+        id: "decorativeVeneeredGlassDoor",
+        label: "Decorative Veneered Glass Door",
+      },
+      { id: "knockDownDoorFrame", label: "Knock Down Door Frame" },
+    ],
+  },
+
+  {
     label: "Price",
     name: "price",
     componentType: "input",
@@ -92,46 +164,42 @@ export const addProductFormElements = [
   },
 ];
 
-
 export const shoppingViewHeaderMenuItems = [
   {
     id: "home",
     label: "Home",
     path: "/shop/home",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
-    
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "Bedroom",
     label: "Bedroom",
     path: "/shop/listing",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "Dinning",
     label: "Dinning",
     path: "/shop/listing",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
-
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "LivingRoom",
     label: "Living Room",
     path: "/shop/listing",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
-
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "Office",
     label: "Office",
     path: "/shop/listing",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
   {
     id: "Door",
     label: "Door",
     path: "/shop/listing",
-    img:"https://cdn-icons-png.flaticon.com/128/2722/2722987.png"
+    img: "https://cdn-icons-png.flaticon.com/128/2722/2722987.png",
   },
 
   {
@@ -141,19 +209,13 @@ export const shoppingViewHeaderMenuItems = [
   },
 ];
 
-
-
 export const categoryOptionsMap = {
   bedroom: "Bedroom",
-  dinning: "Dinning",
+  dinningroom: "Dinningroom",
   livingRoom: "LivingRoom",
   office: "Office",
-  ddor: "Door",
+  door: "Door",
 };
-
-
-
-
 
 export const filterOptions = {
   category: [
@@ -161,9 +223,59 @@ export const filterOptions = {
     { id: "dinning", label: "Dinning" },
     { id: "livingRoom", label: "LivingRoom" },
     { id: "office", label: "Office" },
-    { id: "ddor", label: "Door" },
+    { id: "door", label: "Door" },
   ],
- 
+
+  subCategoryBedroom:  [
+    { id: "bedroomSet", label: "Bedroom Set" },
+    { id: "bed", label: "Bed" },
+    { id: "readingTable", label: "Reading Table" },
+    { id: "bedSideTable", label: "BedSide Table" },
+    { id: "wardrobe", label: "Wardrobe" },
+    { id: "dressingTable", label: "Dressing Table" },
+  ],
+
+  subCategoryDinning: [
+    { id: "dinningroomSet", label: "Dinning Room Set" },
+    { id: "dinningChair", label: "Dinning Chair" },
+    { id: "cafeteria", label: "Cafeteria" },
+    { id: "dinnerWagone", label: "Dinner Wagone" },
+    { id: "showcase", label: "Showcase" },
+    { id: "teaTrolley", label: "Tea Trolley" },
+  ],
+  subCategoryLivingRoom: [
+    { id: "sofa", label: "Sofa" },
+    { id: "centerTable", label: "Dinningroom" },
+    { id: "divan", label: "Divan" },
+    { id: "chair", label: "Chair" },
+    { id: "tvCabinet", label: "TV Cabinet" },
+    { id: "shoeRack", label: "Shoe Rack" },
+  ],
+  subCategoryOffice: [
+    { id: "sofa", label: "Sofa" },
+    { id: "directortable", label: "Director Table" },
+    { id: "computerTable", label: "Computer Table" },
+    { id: "receptionTable", label: "Reception Table" },
+    { id: "conferenceTable", label: "Conference Table" },
+    { id: "swivelChair", label: "Swivel Chair" },
+  ],
+  subCategoryDoor: [
+    { id: "solidWoodenDoor", label: "Solid Wooden Door" },
+    {
+      id: "solidEngineeredWoodenDoor",
+      label: "Solid Engineered Wooden Door",
+    },
+    { id: "solidWoodenGlassDoor", label: "Solid Wooden Glass Door" },
+    {
+      id: "decorativeVeneeredFlushDoor",
+      label: "Decorative Veneered Flush Door",
+    },
+    {
+      id: "decorativeVeneeredGlassDoor",
+      label: "Decorative Veneered Glass Door",
+    },
+    { id: "knockDownDoorFrame", label: "Knock Down Door Frame" },
+  ],
 };
 
 export const sortOptions = [

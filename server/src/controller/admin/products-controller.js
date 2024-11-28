@@ -1,5 +1,5 @@
 import { Product } from "../../models/Product.js";
-import {imageUploadUtil} from "../../helpers/cloudinary.js"
+import { imageUploadUtil } from "../../helpers/cloudinary.js";
 
 const handleImageUpload = async (req, res) => {
   try {
@@ -20,7 +20,6 @@ const handleImageUpload = async (req, res) => {
   }
 };
 
-
 // add a new product
 const addProduct = async (req, res) => {
   try {
@@ -29,7 +28,11 @@ const addProduct = async (req, res) => {
       title,
       description,
       category,
-      brand,
+      bedroom,
+      dinningroom,
+      livingRoom,
+      office,
+      door,
       price,
       salePrice,
       totalStock,
@@ -41,7 +44,11 @@ const addProduct = async (req, res) => {
       title,
       description,
       category,
-      brand,
+      bedroom,
+      dinningroom,
+      livingRoom,
+      office,
+      door,
       price,
       salePrice,
       totalStock,
@@ -90,7 +97,11 @@ const editProduct = async (req, res) => {
       title,
       description,
       category,
-      brand,
+      bedroom,
+      dinningroom,
+      livingRoom,
+      office,
+      door,
       price,
       salePrice,
       totalStock,
@@ -107,7 +118,11 @@ const editProduct = async (req, res) => {
     findProduct.title = title || findProduct.title;
     findProduct.description = description || findProduct.description;
     findProduct.category = category || findProduct.category;
-    findProduct.brand = brand || findProduct.brand;
+    findProduct.bedroom = bedroom || findProduct.bedroom;
+    findProduct.dinningroom = dinningroom || findProduct.dinningroom;
+    findProduct.livingRoom = livingRoom || findProduct.livingRoom;
+    findProduct.office = office || findProduct.office;
+    findProduct.door = door || findProduct.door;
     findProduct.price = price === "" ? 0 : price || findProduct.price;
     findProduct.salePrice =
       salePrice === "" ? 0 : salePrice || findProduct.salePrice;
@@ -115,8 +130,7 @@ const editProduct = async (req, res) => {
     findProduct.image = image || findProduct.image;
     findProduct.averageReview = averageReview || findProduct.averageReview;
 
-
-    await findProduct.save()
+    await findProduct.save();
     res.status(200).json({
       success: true,
       data: findProduct,
@@ -129,7 +143,6 @@ const editProduct = async (req, res) => {
     });
   }
 };
-
 
 //delete a product
 const deleteProduct = async (req, res) => {
@@ -156,5 +169,10 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-
-export { handleImageUpload, addProduct ,fetchAllProducts ,editProduct ,deleteProduct};
+export {
+  handleImageUpload,
+  addProduct,
+  fetchAllProducts,
+  editProduct,
+  deleteProduct,
+};

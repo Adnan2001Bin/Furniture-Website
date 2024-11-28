@@ -9,6 +9,12 @@ function ShoppingProductTile({
   handleGetProductDetails,
   handleAddtoCart,
 }) {
+  // console.log("Category:", product?.title);
+  // console.log("Map Keys:", Object.keys(categoryOptionsMap));
+  // console.log(
+  //   "Key Exists:",
+  //   categoryOptionsMap.hasOwnProperty(product?.title)
+  // );
   return (
     <Card className="w-full max-w-sm mx-auto">
       <div>
@@ -37,10 +43,9 @@ function ShoppingProductTile({
             <h2 className="text-xl font-bold mb-2">{product?.title}</h2>
 
             <div className="flex justify-between items-center mb-2">
-            <span className="text-[16px] text-muted-foreground">
-              {categoryOptionsMap[product?.category]}
-            </span>
-            
+              <span className="text-[16px] text-muted-foreground">
+                {categoryOptionsMap[product?.category]}
+              </span>
             </div>
 
             <div className="flex justify-between items-center mb-2">
