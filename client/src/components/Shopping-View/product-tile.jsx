@@ -9,15 +9,9 @@ function ShoppingProductTile({
   handleGetProductDetails,
   handleAddtoCart,
 }) {
-  // console.log("Category:", product?.title);
-  // console.log("Map Keys:", Object.keys(categoryOptionsMap));
-  // console.log(
-  //   "Key Exists:",
-  //   categoryOptionsMap.hasOwnProperty(product?.title)
-  // );
   return (
     <Card className="w-full max-w-sm mx-auto">
-      <div>
+      <div onClick={() => handleGetProductDetails(product?._id)}>
         <div className="relative">
           <img
             src={product?.image}
@@ -49,8 +43,6 @@ function ShoppingProductTile({
               <span className="text-[16px] text-muted-foreground">
                 {subcategoryOptionsMap[product?.subcategory]}
               </span>
-
-
             </div>
 
             <div className="flex justify-between items-center mb-2">
