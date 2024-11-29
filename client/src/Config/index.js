@@ -67,8 +67,8 @@ export const addProductFormElements = [
   },
 
   {
-    label: "Bedroom",
-    name: "bedroom",
+    label: "Subcategory",
+    name: "subcategory",
     componentType: "select",
     options: [
       { id: "bedroomSet", label: "Bedroom Set" },
@@ -77,52 +77,24 @@ export const addProductFormElements = [
       { id: "bedSideTable", label: "BedSide Table" },
       { id: "wardrobe", label: "Wardrobe" },
       { id: "dressingTable", label: "Dressing Table" },
-    ],
-  },
-  {
-    label: "DinningRoom",
-    name: "dinningroom",
-    componentType: "select",
-    options: [
       { id: "dinningroomSet", label: "Dinning Room Set" },
       { id: "dinningChair", label: "Dinning Chair" },
       { id: "cafeteria", label: "Cafeteria" },
       { id: "dinnerWagone", label: "Dinner Wagone" },
       { id: "showcase", label: "Showcase" },
       { id: "teaTrolley", label: "Tea Trolley" },
-    ],
-  },
-  {
-    label: "LivingRoom",
-    name: "livingRoom",
-    componentType: "select",
-    options: [
       { id: "sofa", label: "Sofa" },
-      { id: "centerTable", label: "Dinningroom" },
+      { id: "centerTable", label: "CenterTable" },
       { id: "divan", label: "Divan" },
       { id: "chair", label: "Chair" },
       { id: "tvCabinet", label: "TV Cabinet" },
       { id: "shoeRack", label: "Shoe Rack" },
-    ],
-  },
-  {
-    label: "Office",
-    name: "office",
-    componentType: "select",
-    options: [
       { id: "sofa", label: "Sofa" },
       { id: "directortable", label: "Director Table" },
       { id: "computerTable", label: "Computer Table" },
       { id: "receptionTable", label: "Reception Table" },
       { id: "conferenceTable", label: "Conference Table" },
       { id: "swivelChair", label: "Swivel Chair" },
-    ],
-  },
-  {
-    label: "Door",
-    name: "door",
-    componentType: "select",
-    options: [
       { id: "solidWoodenDoor", label: "Solid Wooden Door" },
       {
         id: "solidEngineeredWoodenDoor",
@@ -217,49 +189,82 @@ export const categoryOptionsMap = {
   door: "Door",
 };
 
+export const subcategoryOptionsMap = {
+  bedroomSet: "Bedroom Set",
+  bed: "Bed",
+  readingTable: "Reading Table",
+  bedSideTable: "BedSide Table",
+  wardrobe: "Wardrobe",
+  dressingTable: "Dressing Table",
+
+  dinningroomSet: "Dinning Room Set",
+  dinningChair: "Dinning Chair",
+  cafeteria: "Cafeteria",
+  dinnerWagone: "Dinner Wagone",
+  showcase: "Showcase",
+  teaTrolley: "Tea Trolley",
+
+  sofa: "Sofa",
+  centerTable: "Dinningroom",
+  divan: "divan",
+  chair: "Chair",
+  tvCabinet: "TV Cabinet",
+  shoeRack: "Shoe Rack",
+
+  sofa: "Sofa",
+  directortable: "Director Table",
+  computerTable: "Computer Table",
+  receptionTable: "Reception Table",
+  conferenceTable: "Conference Table",
+  swivelChair: "Swivel Chair",
+
+  solidWoodenDoor: "Solid Wooden Door",
+
+  solidEngineeredWoodenDoor: "Solid Engineered Wooden Door",
+
+  solidWoodenGlassDoor: "Solid Wooden Glass Door",
+
+  decorativeVeneeredFlushDoor: "Decorative Veneered Flush Door",
+
+  decorativeVeneeredGlassDoor: "Decorative Veneered Glass Door",
+
+  knockDownDoorFrame: "Knock Down Door Frame",
+};
+
 export const filterOptions = {
   category: [
     { id: "bedroom", label: "Bedroom" },
-    { id: "dinning", label: "Dinning" },
+    { id: "dinningroom", label: "Dinningroom" },
     { id: "livingRoom", label: "LivingRoom" },
     { id: "office", label: "Office" },
     { id: "door", label: "Door" },
   ],
 
-  subCategoryBedroom:  [
+  subcategory: [
     { id: "bedroomSet", label: "Bedroom Set" },
     { id: "bed", label: "Bed" },
     { id: "readingTable", label: "Reading Table" },
     { id: "bedSideTable", label: "BedSide Table" },
     { id: "wardrobe", label: "Wardrobe" },
     { id: "dressingTable", label: "Dressing Table" },
-  ],
-
-  subCategoryDinning: [
     { id: "dinningroomSet", label: "Dinning Room Set" },
     { id: "dinningChair", label: "Dinning Chair" },
     { id: "cafeteria", label: "Cafeteria" },
     { id: "dinnerWagone", label: "Dinner Wagone" },
     { id: "showcase", label: "Showcase" },
     { id: "teaTrolley", label: "Tea Trolley" },
-  ],
-  subCategoryLivingRoom: [
     { id: "sofa", label: "Sofa" },
     { id: "centerTable", label: "Dinningroom" },
     { id: "divan", label: "Divan" },
     { id: "chair", label: "Chair" },
     { id: "tvCabinet", label: "TV Cabinet" },
     { id: "shoeRack", label: "Shoe Rack" },
-  ],
-  subCategoryOffice: [
     { id: "sofa", label: "Sofa" },
     { id: "directortable", label: "Director Table" },
     { id: "computerTable", label: "Computer Table" },
     { id: "receptionTable", label: "Reception Table" },
     { id: "conferenceTable", label: "Conference Table" },
     { id: "swivelChair", label: "Swivel Chair" },
-  ],
-  subCategoryDoor: [
     { id: "solidWoodenDoor", label: "Solid Wooden Door" },
     {
       id: "solidEngineeredWoodenDoor",

@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { categoryOptionsMap } from "@/Config";
+import { categoryOptionsMap, subcategoryOptionsMap } from "@/Config";
 
 function ShoppingProductTile({
   product,
@@ -43,9 +43,14 @@ function ShoppingProductTile({
             <h2 className="text-xl font-bold mb-2">{product?.title}</h2>
 
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[16px] text-muted-foreground">
+              <span className="text-[16px] text-muted-foreground ">
                 {categoryOptionsMap[product?.category]}
               </span>
+              <span className="text-[16px] text-muted-foreground">
+                {subcategoryOptionsMap[product?.subcategory]}
+              </span>
+
+
             </div>
 
             <div className="flex justify-between items-center mb-2">

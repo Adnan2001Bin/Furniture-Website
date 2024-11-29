@@ -28,11 +28,7 @@ const addProduct = async (req, res) => {
       title,
       description,
       category,
-      bedroom,
-      dinningroom,
-      livingRoom,
-      office,
-      door,
+      subcategory,
       price,
       salePrice,
       totalStock,
@@ -44,11 +40,7 @@ const addProduct = async (req, res) => {
       title,
       description,
       category,
-      bedroom,
-      dinningroom,
-      livingRoom,
-      office,
-      door,
+      subcategory,
       price,
       salePrice,
       totalStock,
@@ -97,11 +89,7 @@ const editProduct = async (req, res) => {
       title,
       description,
       category,
-      bedroom,
-      dinningroom,
-      livingRoom,
-      office,
-      door,
+      subcategory,
       price,
       salePrice,
       totalStock,
@@ -118,11 +106,8 @@ const editProduct = async (req, res) => {
     findProduct.title = title || findProduct.title;
     findProduct.description = description || findProduct.description;
     findProduct.category = category || findProduct.category;
-    findProduct.bedroom = bedroom || findProduct.bedroom;
-    findProduct.dinningroom = dinningroom || findProduct.dinningroom;
-    findProduct.livingRoom = livingRoom || findProduct.livingRoom;
-    findProduct.office = office || findProduct.office;
-    findProduct.door = door || findProduct.door;
+    findProduct.subcategory = subcategory || findProduct.subcategory;
+    
     findProduct.price = price === "" ? 0 : price || findProduct.price;
     findProduct.salePrice =
       salePrice === "" ? 0 : salePrice || findProduct.salePrice;

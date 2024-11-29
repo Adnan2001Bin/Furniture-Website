@@ -15,7 +15,6 @@ import { sortOptions } from "@/Config";
 import { ArrowUpDownIcon } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 
-
 function createSearchParamsHelper(filterParams) {
   const queryParams = [];
 
@@ -40,53 +39,37 @@ function ShoppingListing() {
   const [sort, setSort] = useState(null);
   const [searchParams , setSearchParams] =useSearchParams()
 
-
-  // Restore filters from sessionStorage on load
-  useEffect(() => {
-    const savedFilters = JSON.parse(sessionStorage.getItem("filters")) || {};
-    setFilters(savedFilters);
-  }, []);
-
-  // Fetch filtered products on initial load
-  useEffect(() => {
-    dispatch(fetchAllFilteredProducts());
-  }, [dispatch]);
-
-  // Handle sorting
   function handleSort(value) {
     setSort(value);
   }
 
-  // Handle filter changes (both categories and subcategories)
-  function handleFilter(sectionId, option) {
-    let updatedFilters = { ...filters };
+  function handleFilter(getSectionId, getCurrentOption) {
+    let cpyFilters = { ...filters };
+    const indexOfCurrentSection = Object.keys(cpyFilters).indexOf(getSectionId);
 
-    if (sectionId === "category") {
-      const isUnchecking = updatedFilters[sectionId]?.includes(option);
-
-      // Toggle category selection
-      updatedFilters[sectionId] = isUnchecking
-        ? updatedFilters[sectionId].filter((id) => id !== option)
-        : [...(updatedFilters[sectionId] || []), option];
-
-      // Remove related subcategories if unchecking
-      if (isUnchecking) {
-        const subCategoryKey = `subCategory${option.charAt(0).toUpperCase() + option.slice(1)}`;
-        delete updatedFilters[subCategoryKey];
-      }
+    if (indexOfCurrentSection === -1) {
+      cpyFilters = {
+        ...cpyFilters,
+        [getSectionId]: [getCurrentOption],
+      };
     } else {
-      // Toggle subcategory selection
-      const subCategoryList = updatedFilters[sectionId] || [];
-      const isUncheckingSub = subCategoryList.includes(option);
+      const indexOfCurrentOption =
+        cpyFilters[getSectionId].indexOf(getCurrentOption);
 
-      updatedFilters[sectionId] = isUncheckingSub
-        ? subCategoryList.filter((id) => id !== option)
-        : [...subCategoryList, option];
+      if (indexOfCurrentOption === -1)
+        cpyFilters[getSectionId].push(getCurrentOption);
+      else cpyFilters[getSectionId].splice(indexOfCurrentOption, 1);
     }
 
-    setFilters(updatedFilters);
-    sessionStorage.setItem("filters", JSON.stringify(updatedFilters));
+    setFilters(cpyFilters);
+
+    sessionStorage.setItem("filters", JSON.stringify(cpyFilters));
   }
+
+  useEffect(() => {
+    setSort("price-lowtohigh")
+    setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
+  },[])
 
   useEffect(() => {
     if (filters && Object.keys(filters).length > 0) {
@@ -95,7 +78,17 @@ function ShoppingListing() {
     }
   }, [filters]);
 
-  console.log(filters, "filters")
+  useEffect(() => {
+    if (filters !== null && sort !== null)
+      dispatch(
+        fetchAllFilteredProducts({ filterParams: filters, sortParams: sort })
+      );
+  }, [dispatch,sort , filters]);
+  
+
+  console.log(filters, "productlist");
+
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6">
@@ -107,7 +100,7 @@ function ShoppingListing() {
 
           <div className="flex items-center gap-3">
             <span className="text-muted-foreground">
-              {productList?.length || 0} Products
+              {productList?.length} Products
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -140,7 +133,7 @@ function ShoppingListing() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {productList && productList.length > 0
             ? productList.map((productItem) => (
-                <ShoppingProductTile key={productItem.id} product={productItem} />
+                <ShoppingProductTile product={productItem} />
               ))
             : null}
         </div>
