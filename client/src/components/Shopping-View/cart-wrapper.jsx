@@ -30,7 +30,7 @@ function UserCartWrapper({ cartItems }) {
       <div className="mt-8 space-y-4">
         <div className="flex justify-between">
           <span className="font-bold">Total</span>
-          <span className="font-bold">TK{totalCartAmount}</span>
+          <span className="font-bold">{totalCartAmount} BDT</span>
         </div>
       </div>
 

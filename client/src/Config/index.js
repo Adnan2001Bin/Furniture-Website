@@ -63,6 +63,7 @@ export const addProductFormElements = [
       { id: "livingroom", label: "Livingroom" },
       { id: "office", label: "Office" },
       { id: "door", label: "Door" },
+      { id: "newArrivals", label: "New Arrivals" },
     ],
   },
 
@@ -182,6 +183,7 @@ export const categoryOptionsMap = {
   livingRoom: "LivingRoom",
   office: "Office",
   door: "Door",
+  "newArrivals" :"New Arrivals" ,
 };
 
 export const subcategoryOptionsMap = {
@@ -233,6 +235,7 @@ export const filterOptions = {
     { id: "livingRoom", label: "LivingRoom" },
     { id: "office", label: "Office" },
     { id: "door", label: "Door" },
+    { id: "newArrivals", label: "New Arrivals" },
   ],
 
   subcategory: [

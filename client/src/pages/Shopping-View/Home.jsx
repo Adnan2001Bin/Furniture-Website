@@ -5,6 +5,7 @@ import Choices_Based from "./Choices-Based/Choices-Based";
 import { useEffect, useState } from "react";
 import Flagship from "./Flagship/Flagship";
 import Popular from "./Popular/Popular";
+import NewArrival from "./NewArrival";
 
 function ShoppingHome() {
   const img1 =
@@ -12,7 +13,7 @@ function ShoppingHome() {
   const img2 =
     "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992109/urbanCraft/homepageimg/b2allqvahtqwizrskkcy.jpg";
   const img3 =
-    "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992208/urbanCraft/homepageimg/qslae5ipnrkowwxluo0u.jpg";
+    "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733326943/urbanCraft/homepageimg/v2phv7t67ppxkdbupn0t.jpg";
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [img1, img2, img3];
@@ -73,6 +74,10 @@ function ShoppingHome() {
 
       <section>
         <Popular />
+      </section>
+
+      <section>
+        <NewArrival />
       </section>
     </div>
   );
