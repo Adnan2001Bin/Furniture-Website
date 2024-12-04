@@ -22,6 +22,11 @@ import CheckAuth from "./components/common/Check-Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "./components/ui/skeleton";
+import BedRoomSubCatagoriesPage from "./pages/Shopping-View/CatagoriesPage/BedRoomSubCatagoriesPage";
+import DinningSubCatagoriesPage from "./pages/Shopping-View/CatagoriesPage/DinningSubCatagoriesPage";
+import LivingRoomSubCatagoriesPage from "./pages/Shopping-View/CatagoriesPage/LivingRoomSubCatagoriesPage";
+import OfficeRoomSubCatagoriesPage from "./pages/Shopping-View/CatagoriesPage/OfficeRoomSubCatagoriesPage";
+import DoorSubCatagoriesPage from "./pages/Shopping-View/CatagoriesPage/DoorSubCatagoriesPage";
 
 function App() {
   const {user , isAuthenticated , isLoading} = useSelector(state => state.auth)
@@ -103,6 +108,26 @@ function App() {
         {
           path: "account",
           element: <ShoppingAccount />,
+        },
+        {
+          path:"bedRoomSubCatagoriesPage",
+          element: <BedRoomSubCatagoriesPage />
+        },
+        {
+          path:"dinningRoomSubCatagoriesPage",
+          element: <DinningSubCatagoriesPage />
+        },
+        {
+          path:"livingRoomSubCatagoriesPage",
+          element: <LivingRoomSubCatagoriesPage />
+        },
+        {
+          path:"officeRoomSubCatagoriesPage",
+          element: <OfficeRoomSubCatagoriesPage />
+        },
+        {
+          path:"doorSubCatagoriesPage",
+          element: <DoorSubCatagoriesPage />
         },
       ],
     },

@@ -8,11 +8,11 @@ import Popular from "./Popular/Popular";
 
 function ShoppingHome() {
   const img1 =
-  "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732989532/urbanCraft/homepageimg/butdpltc7klpegsovvxo.jpg";
+    "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732989532/urbanCraft/homepageimg/butdpltc7klpegsovvxo.jpg";
   const img2 =
-  "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992109/urbanCraft/homepageimg/b2allqvahtqwizrskkcy.jpg";
+    "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992109/urbanCraft/homepageimg/b2allqvahtqwizrskkcy.jpg";
   const img3 =
-  "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992208/urbanCraft/homepageimg/qslae5ipnrkowwxluo0u.jpg";
+    "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732992208/urbanCraft/homepageimg/qslae5ipnrkowwxluo0u.jpg";
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [img1, img2, img3];
@@ -27,18 +27,15 @@ function ShoppingHome() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="relative w-full h-[600px] overflow-hidden">
-      {
-        slides.map((slide, index) => (
-              <img
-                src={slide}
-                key={index}
-                className={`${
-                  index === currentSlide ? "opacity-100" : "opacity-0"
-                } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
-              />
-            ))
-      }
-       
+        {slides.map((slide, index) => (
+          <img
+            src={slide}
+            key={index}
+            className={`${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
+          />
+        ))}
 
         <Button
           onClick={() =>

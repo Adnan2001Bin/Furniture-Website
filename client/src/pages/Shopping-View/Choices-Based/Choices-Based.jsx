@@ -1,35 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Choices_Based.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchAllFilteredProducts } from "@/store/shop/products-slice";
 
 const ChoicesBasedCatagory = [
   {
-    id: "bedRoom",
+    id: "bedroom",
     label: "BedRoom",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732424707/urbanCraft/catagories/ChoicesBased/m3gkftb1gbbhtnfyzhws.jpg",
   },
 
   {
-    id: "officeSpace",
+    id: "office",
     label: "OfficeSpace",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732424708/urbanCraft/catagories/ChoicesBased/qv8b3dhrwrcvzchnzxkf.jpg",
   },
 
   {
-    id: "diningSpace",
+    id: "dinningroom",
     label: "DiningSpace",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732424708/urbanCraft/catagories/ChoicesBased/jnynjrzpcv2gah8anymn.jpg",
   },
 
   {
-    id: "industrialSpace",
-    label: "IndustrialSpace",
-    img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732424708/urbanCraft/catagories/ChoicesBased/qiid1hfuoninwjztoirv.jpg",
-  },
-
-  {
-    id: "kitchenCollection",
-    label: "KitchenCollection",
-    img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1732424708/urbanCraft/catagories/ChoicesBased/nemydtlfbt93fb1w7nxf.jpg",
+    id: "door",
+    label: "Door",
+    img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733240160/urbanCraft/catagories/popular/j16vep1ebkbfkbkhgx8n.webp",
   },
 
   {
@@ -40,6 +37,27 @@ const ChoicesBasedCatagory = [
 ];
 
 const Choices_Based = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      fetchAllFilteredProducts({
+        filterParams: {},
+        sortParams: "price-lowtohigh",
+      })
+    );
+  }, [dispatch]);
+
+  function handleNavigateToListingPage(getCurrentItem, section) {
+    sessionStorage.removeItem("filters");
+    const currentFilter = {
+      [section]: [getCurrentItem.id],
+    };
+
+    sessionStorage.setItem("filters", JSON.stringify(currentFilter));
+    navigate(`/shop/listing`);
+  }
   return (
     // flex ml-2 mr-2 mt-5
     <div className=" lg:flex lg:ml-2 lg:mr-2 lg:mt-5 mt-5 w-full lg:pl-2 sm:pl-10">
@@ -59,10 +77,15 @@ const Choices_Based = () => {
 
       <div className=" grid grid-cols-3 lg:w-4/6 lg:ml-5 lg:gap-3 sm:w-11/12 gap-2 mt-5">
         {ChoicesBasedCatagory.map((choicesBasedItem) => (
-          <div className="relative w-full lg:h-72 sm:h-60 h-52">
+          <div
+            onClick={() =>
+              handleNavigateToListingPage(choicesBasedItem, "category")
+            }
+            className="relative w-full lg:h-72 sm:h-60 h-52"
+          >
             <img
               src={choicesBasedItem.img}
-              alt="BedRoom"
+              alt=""
               className="w-full h-full object-cover"
             />
             <div className=" absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 ">
