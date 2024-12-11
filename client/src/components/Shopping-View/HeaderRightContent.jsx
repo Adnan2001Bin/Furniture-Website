@@ -22,7 +22,6 @@ function HeaderRightContent() {
   const [openCartSheet, setOpenCartSheet] = useState(false);
   const { cartItems } = useSelector((state) => state.shopCart);
 
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -46,11 +45,15 @@ function HeaderRightContent() {
           <ShoppingCart className="w-6 h-6" />
           <span className="sr-only">User cart</span>
         </Button>
-        <UserCartWrapper cartItems={
+
+        <UserCartWrapper
+          setOpenCartSheet={setOpenCartSheet}
+          cartItems={
             cartItems && cartItems.items && cartItems.items.length > 0
               ? cartItems.items
               : []
-          } />
+          }
+        />
       </Sheet>
 
       <DropdownMenu>

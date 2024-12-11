@@ -10,8 +10,8 @@ function ShoppingHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/shop/home" className="flex items-center gap-2">
-          <img className="w-36 lg:w-40" src="https://res.cloudinary.com/dlqwzlbva/image/upload/v1732301565/kxu4oqjgdgnl1wcn9dvc.png" alt="" />
+        <Link to="/shop/home" className="flex items-center gap-2 ">
+          <img className="w-36 lg:w-40" src="https://res.cloudinary.com/dlqwzlbva/image/upload/v1733848897/urbanCraft/suid18jawe2sz2sqsoco.png" alt="" />
         </Link>
 
         <Sheet>
