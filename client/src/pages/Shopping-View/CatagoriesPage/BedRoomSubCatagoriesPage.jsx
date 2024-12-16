@@ -12,12 +12,12 @@ const subCatagories = [
   },
   {
     id: "bed",
-    label: "BED",
+    label: "Bed",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733250241/urbanCraft/catagories/bedroom/subcategories/eutgnm5yadnvuc0ec49o.jpg",
   },
   {
     id: "readingTable",
-    label: "Reading table",
+    label: "Reading Table",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733250241/urbanCraft/catagories/bedroom/subcategories/xybzkbfsjoxxlhwtvfe7.jpg",
   },
   {
@@ -31,7 +31,7 @@ const subCatagories = [
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733250242/urbanCraft/catagories/bedroom/subcategories/ozp2kovvqfevxk2ldvi2.jpg",
   },
   {
-    id: "dressingTable ",
+    id: "dressingTable",
     label: "Dressing Table",
     img: "https://res.cloudinary.com/dlqwzlbva/image/upload/v1733250241/urbanCraft/catagories/bedroom/subcategories/obue8rsncdjha635k69k.jpg",
   },
@@ -53,12 +53,13 @@ const BedRoomSubCatagoriesPage = () => {
   function handleNavigateToListingPage(getCurrentItem, section) {
     sessionStorage.removeItem("filters");
     const currentFilter = {
-      [section]: [getCurrentItem.id],
+      category: ["bedroom"], // Include the parent category
+      [section]: [getCurrentItem.id], // Include the selected subcategory
     };
-
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
     navigate(`/shop/listing`);
   }
+
   return (
     <div>
       <div className="flex justify-between shadow-md w-full lg:h-96">
@@ -66,11 +67,11 @@ const BedRoomSubCatagoriesPage = () => {
           <img
             className="w-full h-full"
             src="https://res.cloudinary.com/dlqwzlbva/image/upload/v1733250243/urbanCraft/catagories/bedroom/subcategories/wnl9s7ubkz9p1srhhbzp.jpg"
-            alt=""
+            alt="Bedroom Furniture"
           />
         </div>
-        <div className="BedHeadingText  lg:text-slate-700 lg:w-5/12 lg:flex lg:flex-col lg:h-full font-MyFont pl-7 pt-20  hidden">
-          <h1 className="text-6xl font-bold ">Bedroom Furniture</h1>
+        <div className="BedHeadingText lg:text-slate-700 lg:w-5/12 lg:flex lg:flex-col lg:h-full font-MyFont pl-7 pt-20 hidden">
+          <h1 className="text-6xl font-bold">Bedroom Furniture</h1>
           <h3 className="text-2xl font-medium mt-3">
             GIVES YOUR COMFORT WITH REGAL TOUCH
           </h3>
@@ -82,21 +83,21 @@ const BedRoomSubCatagoriesPage = () => {
       </div>
 
       <div className="w-full lg:mt-14 mt-5 p-5">
-        <h1 className="text-center text-3xl text-orange-700 w">Bedroom</h1>
-
+        <h1 className="text-center text-3xl text-orange-700">Bedroom</h1>
         <div className="grid lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 lg:gap-5 gap-y-4 lg:text-xl text-lg">
           {subCatagories.map((subCategorie) => (
             <div
+              key={subCategorie.id}
               onClick={() =>
                 handleNavigateToListingPage(subCategorie, "subcategory")
               }
-              className="p-4 lg:w-64 w-44 lg:h-80 h-64 shadow-lg rounded-md overflow-hidden hover:border-2 hover:border-gray-300 "
+              className="p-4 lg:w-64 w-44 lg:h-80 h-64 shadow-lg rounded-md overflow-hidden hover:border-2 hover:border-gray-300"
             >
-              <div className="w-full lg:h-60 h-44 overflow-hidden relative rounded-md ">
+              <div className="w-full lg:h-60 h-44 overflow-hidden relative rounded-md">
                 <img
                   className="transition-transform duration-700 transform hover:scale-110 w-full h-full object-cover"
                   src={subCategorie.img}
-                  alt={subCategorie.img}
+                  alt={subCategorie.label}
                 />
               </div>
               <p className="text-center mt-3 font-mono font-semibold">

@@ -1,9 +1,13 @@
-import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-import { Table, TableBody, TableCell, TableHead, TableRow } from '../ui/table'
-import { Button } from '../ui/button'
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
+import { Button } from "../ui/button";
+import { Dialog } from "../ui/dialog";
+import AdminOrderDetailsView from "./Order-details";
 
 function AdminOrdersView() {
+  const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
+
   return (
     <Card>
       <CardHeader>
@@ -29,16 +33,27 @@ function AdminOrdersView() {
               <TableCell>In Process</TableCell>
               <TableCell>$1000</TableCell>
               <TableCell>
-                <Button>
-                  View Details
-                </Button>
+                <Dialog
+                  open={openDetailsDialog}
+                  onOpenChange={() => {
+                    setOpenDetailsDialog(false);
+                    dispatch(resetOrderDetails());
+                  }}
+                >
+                  <Button
+                    onClick={() => setOpenDetailsDialog(true)}
+                  >
+                    View Details
+                  </Button>
+                  <AdminOrderDetailsView  />
+                </Dialog>
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export default AdminOrdersView
+export default AdminOrdersView;

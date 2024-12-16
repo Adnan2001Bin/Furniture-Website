@@ -1,11 +1,17 @@
 import Address from "@/components/Shopping-View/Address";
 import UserCartItemsContent from "@/components/Shopping-View/cart-items-content";
 import { Button } from "@/components/ui/button";
-import React from "react";
+import { useToast } from "@/hooks/use-toast";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 function ShoppingCheckout() {
   const { cartItems } = useSelector((state) => state.shopCart);
+  
+
+  const [currentSelectedAddress, setCurrentSelectedAddress] = useState(null);
+  const { toast } = useToast();
+
   const totalCartAmount =
     cartItems && cartItems.items && cartItems.items.length > 0
       ? cartItems.items.reduce(
@@ -19,6 +25,24 @@ function ShoppingCheckout() {
         )
       : 0;
 
+  function handleInitiatePaypalPayment() {
+    if (cartItems.items && cartItems.items.length === 0) {
+      toast({
+        title: "Your cart is empty. Please add items to proceed",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (currentSelectedAddress === null) {
+      toast({
+        title: "Please select one address to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
+  }
+
+
   return (
     <div className="flex flex-col">
       <div className="relative h-[350px] w-full overflow-hidden">
@@ -30,8 +54,8 @@ function ShoppingCheckout() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 p-5">
         <Address
-        // selectedId={currentSelectedAddress}
-        // setCurrentSelectedAddress={setCurrentSelectedAddress}
+          selectedId={currentSelectedAddress}
+          setCurrentSelectedAddress={setCurrentSelectedAddress}
         />
 
         <div className="flex flex-col gap-4">
@@ -40,6 +64,7 @@ function ShoppingCheckout() {
                 <UserCartItemsContent cartItem={item} />
               ))
             : null}
+
           <div className="mt-8 space-y-4">
             <div className="flex justify-between">
               <span className="font-bold">Total</span>
@@ -48,7 +73,9 @@ function ShoppingCheckout() {
           </div>
 
           <div className="mt-4 w-full">
-            <Button className="w-full"> Checkout</Button>
+            <Button onClick={handleInitiatePaypalPayment} className="w-full">
+              Checkout
+            </Button>
           </div>
         </div>
       </div>
